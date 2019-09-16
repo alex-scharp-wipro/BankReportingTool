@@ -178,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\api\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
