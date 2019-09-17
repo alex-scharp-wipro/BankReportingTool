@@ -1,0 +1,12 @@
+﻿@{
+    //TODO: Hook into DB for real data
+    // Template code for generating a chart
+    var myChart = new Chart(width: 800, height: 600, theme: ChartTheme.Blue)
+        .AddTitle("Chart Title")
+        .AddSeries(
+            name: "ChartTitle",
+            chartType: "Pie",
+            xValue: new[] { "Col1", "Col2", "Col3", "Col4", "Col5" },
+            yValues: new[] { "2", "6", "4", "5", "3" })
+        .Write();
+}

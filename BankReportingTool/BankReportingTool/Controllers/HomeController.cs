@@ -27,11 +27,17 @@ namespace BankReportingTool.Controllers
             return View();
         }
 
+        // GET /Home/Results
         public ActionResult Results()
         {
             ViewBag.Message = "Results Query";
 
             return View();
+        }
+        // Grab chart to render in partial view
+        public ActionResult DrawChart()
+        {
+            return View("_Chart");
         }
     }
 }
