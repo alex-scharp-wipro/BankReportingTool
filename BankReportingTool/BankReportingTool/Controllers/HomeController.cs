@@ -26,5 +26,12 @@ namespace BankReportingTool.Controllers
 
             return View();
         }
+
+        public ActionResult Results()
+        {
+            ViewBag.Message = "Results Query";
+
+            return View();
+        }
     }
 }
