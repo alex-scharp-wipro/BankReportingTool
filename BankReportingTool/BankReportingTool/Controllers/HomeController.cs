@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BankReportingTool.Models;
 
 namespace BankReportingTool.Controllers
 {
@@ -13,18 +14,36 @@ namespace BankReportingTool.Controllers
             return View();
         }
 
-        public ActionResult About()
+        /// <summary>
+        /// GET /Home/Report/reportName
+        /// After the user selects a report, the page should redirect here.
+        /// This method returns a partial view containing search filters 
+        /// specific to the requested report.
+        /// </summary>
+        /// <param name="reportId">ID of the report</param>
+        /// <returns></returns>
+        public ActionResult Report(int reportId)
         {
-            ViewBag.Message = "Your application description page.";
+            string viewName;
+            object viewModel;
 
-            return View();
-        }
+            // Assign viewName and viewModel based on reportId
+            switch(reportId)
+            {
+                // Consumer Spending Report
+                case 0:
+                    viewName = "ConsumerSpendingForm";
+                    viewModel = new Models.ConsumerSpending.ConsumerSpendingViewModel();
+                    break;
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+                // Uh oh! Id does not match a known report.
+                default:
+                    string message = "Oops! We couldn't find that report.";
+                    return new HttpNotFoundResult(message);
+            }
 
-            return View();
+            // Return the appropriate partial view
+            return PartialView(viewName, viewModel);
         }
 
         // GET /Home/Results
