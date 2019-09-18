@@ -31,7 +31,7 @@ namespace BankReportingTool.Controllers
             switch(reportId)
             {
                 // Consumer Spending Report
-                case 0:
+                case (int)Reports.ConsumerSpending:
                     viewName = "ConsumerSpendingForm";
                     viewModel = new Models.ConsumerSpending.ConsumerSpendingViewModel();
                     break;
