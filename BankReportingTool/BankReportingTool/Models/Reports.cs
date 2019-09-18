@@ -10,7 +10,6 @@ namespace BankReportingTool.Models
     /// </summary>
     public enum Reports
     {
-        ConsumerSpending = 0,
-        Hello
+        ConsumerSpending
     };
 }
