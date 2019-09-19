@@ -23,7 +23,7 @@ namespace BankReportingTool
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
+                      "~/Content/bootstrap-materia.css",
                       "~/Content/site.css"));
         }
     }

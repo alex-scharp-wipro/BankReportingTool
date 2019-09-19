@@ -2,11 +2,11 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
+<div class="row mt-5">
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">Saved Searches</div>
-            <div class="panel-body">
+        <div class="card">
+            <div class="card-header">Saved Searches</div>
+            <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item">search 1</li>
                     <li class="list-group-item">search 2</li>
@@ -19,11 +19,12 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">Reports DropDown</div>
-            <div class="panel-body">data...</div>
+        <div class="card my-3">
+            <div class="card-header">Reports DropDown</div>
+            <div class="card-body">data...</div>
         </div>
-        @*  For file upload buttons, jQuery updates file name when selected  *@
+        @*  For file upload buttons, jQuery updates file name when selected
+            Set up routing for POST *@
         @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
 
