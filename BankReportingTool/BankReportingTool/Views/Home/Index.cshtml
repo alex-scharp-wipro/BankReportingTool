@@ -23,11 +23,21 @@
             <div class="panel-heading">Reports DropDown</div>
             <div class="panel-body">data...</div>
         </div>
+        @*  For file upload buttons, jQuery updates file name when selected  *@
+        @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <label class="btn btn-primary">
+                <input id="file" name="file" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)" />
+                Choose File
+            </label>
+            <span id="upload-file-info"></span>
+            <br />
+            <input class="btn btn-primary" type="submit" value="Upload" />
+            @ViewBag.Message
+        }
     </div>
     <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">Filters</div>
-            <div class="panel-body">data...</div>
-        </div>
+        @Html.Partial("_Filters")
     </div>
 </div>
