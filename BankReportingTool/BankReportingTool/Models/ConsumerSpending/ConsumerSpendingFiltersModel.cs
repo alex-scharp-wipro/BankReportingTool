@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BankReportingTool.Models.ConsumerSpending
 {
-    public class ConsumerSpendingFilterModel
+    public class ConsumerSpendingFiltersModel
     {
         // TODO Implement class to accept filter values
         [HiddenInput(DisplayValue = false)]

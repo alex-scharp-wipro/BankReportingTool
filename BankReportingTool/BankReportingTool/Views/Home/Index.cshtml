@@ -1,4 +1,6 @@
-﻿@{
+﻿@using BankReportingTool.Models;
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -21,13 +23,15 @@
     <div class="col-md-6">
         <div class="card my-3">
             <div class="card-header">Reports DropDown</div>
-            <div class="card-body">data...</div>
+            @Html.DropDownList("ReportSelection",
+                    new SelectList(Enum.GetValues(typeof(Reports))),
+                    "Select Report",
+                    new { @class = "form-control" })
         </div>
         @*  For file upload buttons, jQuery updates file name when selected
             Set up routing for POST *@
         @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-
             <label class="btn btn-primary">
                 <input id="file" name="file" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)" />
                 Choose File
