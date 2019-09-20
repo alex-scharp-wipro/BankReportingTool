@@ -15,14 +15,15 @@ namespace BankReportingTool.Controllers
         }
 
         /// <summary>
-        /// GET /Home/Report/reportName
-        /// After the user selects a report, the page should redirect here.
+        /// GET /Home/GetFilters/reportId
+        /// After the user selects a report, the page should request here.
         /// This method returns a partial view containing search filters 
         /// specific to the requested report.
+        /// If no match, return HTTP 404 message.
         /// </summary>
-        /// <param name="reportId">ID of the report</param>
+        /// <param name="reportId">Report's enum value as int</param>
         /// <returns></returns>
-        public ActionResult Report(int reportId)
+        public ActionResult GetFilters(int reportId)
         {
             string viewName;
             object viewModel;
@@ -32,7 +33,8 @@ namespace BankReportingTool.Controllers
             {
                 // Consumer Spending Report
                 case (int)Reports.ConsumerSpending:
-                    viewName = "ConsumerSpendingForm";
+                    viewName = "ConsumerSpendingFilters";
+                    // TODO rename model to ConsumerSpendingFiltersModel
                     viewModel = new Models.ConsumerSpending.ConsumerSpendingViewModel();
                     break;
 
@@ -41,6 +43,9 @@ namespace BankReportingTool.Controllers
                     string message = "Oops! We couldn't find that report.";
                     return new HttpNotFoundResult(message);
             }
+
+            // Store reportId in ViewBag.
+            ViewBag.SelectedReport = reportId;
 
             // Return the appropriate partial view
             return PartialView(viewName, viewModel);
