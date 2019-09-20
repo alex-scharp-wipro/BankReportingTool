@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BankReportingTool.Models;
+using BankReportingTool.Models.ConsumerSpending;
 
 namespace BankReportingTool.Controllers
 {
@@ -35,7 +36,7 @@ namespace BankReportingTool.Controllers
                 case (int)Reports.ConsumerSpending:
                     viewName = "ConsumerSpendingFilters";
                     // TODO rename model to ConsumerSpendingFiltersModel
-                    viewModel = new Models.ConsumerSpending.ConsumerSpendingViewModel();
+                    viewModel = new ConsumerSpendingViewModel();
                     break;
 
                 // Uh oh! Id does not match a known report.
@@ -49,6 +50,32 @@ namespace BankReportingTool.Controllers
 
             // Return the appropriate partial view
             return PartialView(viewName, viewModel);
+        }
+
+
+        public ActionResult Submit(object reportFilterModel)
+        {
+            object submitModel;
+            bool isTypeMismatch = false;
+
+            if (ViewBag.SelectedReport == Reports.ConsumerSpending)
+            {
+                // TODO: Create submit model
+                submitModel = new ConsumerSpendingSubmitModel();
+                
+                // TODO: Check type mismatch OR refactor to generic implementation
+                var temp = reportFilterModel as ConsumerSpendingViewModel;
+                if (temp == null) isTypeMismatch = true;
+            }
+
+            // Handle mismatches between selected report ID and model type.
+            if (isTypeMismatch)
+            {
+                throw new Exception("Type mismatch between selected report and report submit model.");
+            }
+
+            // Redirect to Results action
+            return RedirectToAction("Results");
         }
 
         // GET /Home/Results
