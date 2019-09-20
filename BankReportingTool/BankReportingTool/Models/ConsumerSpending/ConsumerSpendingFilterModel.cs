@@ -13,28 +13,31 @@ namespace BankReportingTool.Models.ConsumerSpending
         [HiddenInput(DisplayValue = false)]
         public int AccountId { get; set; }
 
-        [Display(Name = "Age")]
-        public int? Age { get; set; }
+        [Display(Name = "Age Min")]
+        public int? AgeMin { get; set; }
+
+        [Display(Name = "Age Max")]
+        public int? AgeMax { get; set; }
 
         [Display(Name = "Is Online")]
         public bool? IsOnline { get; set; }
 
-        [Display(Name = "Payment Type")]
-        public int? PaymentType { get; set; }
+        [Display(Name = "Not Online")]
+        public bool? NotOnline { get; set; }
 
-        [Display(Name = "Date")]
-        public string Date { get; set; }
+        [Display(Name = "Cash Payment")]
+        public bool? CashPayment{ get; set; }
 
-        [Display(Name = "Store")]
-        public string Store { get; set; }
+        [Display(Name = "Online Payment")]
+        public bool? OnlinePayment { get; set; }
 
-        [Display(Name = "Location")]
-        public string Location { get; set; }
+        [Display(Name = "Date Start")]
+        public string DateStart { get; set; }
 
-        [Display(Name = "Goods")]
-        public string Goods { get; set; }
+        [Display(Name = "Date End")]
+        public string DateEnd { get; set; }
 
-        [Display(Name = "Amount")]
-        public string Amount { get; set; }
+        [Display(Name = "State")]
+        public string State { get; set; }
     }
 }
