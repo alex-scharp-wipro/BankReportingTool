@@ -35,7 +35,7 @@ namespace BankReportingTool.Controllers
                 case (int)Reports.ConsumerSpending:
                     viewName = "ConsumerSpendingFilters";
                     // TODO rename model to ConsumerSpendingFiltersModel
-                    viewModel = new Models.ConsumerSpending.ConsumerSpendingViewModel();
+                    viewModel = new Models.ConsumerSpending.ConsumerSpendingFilterModel();
                     break;
 
                 // Uh oh! Id does not match a known report.
