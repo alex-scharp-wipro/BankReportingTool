@@ -10,26 +10,20 @@ namespace BankReportingTool.Models.ConsumerSpending
     public class ConsumerSpendingFiltersModel
     {
         // TODO Implement class to accept filter values
-        [HiddenInput(DisplayValue = false)]
-        public int AccountId { get; set; }
-
         [Display(Name = "Age Min")]
         public int? AgeMin { get; set; }
 
         [Display(Name = "Age Max")]
         public int? AgeMax { get; set; }
 
-        [Display(Name = "Is Online")]
-        public bool? IsOnline { get; set; }
+        [Display(Name = "Is Male")]
+        public bool? IsMale { get; set; }
 
-        [Display(Name = "Not Online")]
-        public bool? NotOnline { get; set; }
+        [Display(Name = "Is Female")]
+        public bool? IsFemale { get; set; }
 
-        [Display(Name = "Cash Payment")]
-        public bool? CashPayment{ get; set; }
-
-        [Display(Name = "Online Payment")]
-        public bool? OnlinePayment { get; set; }
+        [Display(Name = "Payment Type")]
+        public bool? PaymentType { get; set; }
 
         [Display(Name = "Date Start")]
         public string DateStart { get; set; }
@@ -39,5 +33,11 @@ namespace BankReportingTool.Models.ConsumerSpending
 
         [Display(Name = "State")]
         public string State { get; set; }
+
+        [Display(Name = "Goods")]
+        public string Goods { get; set;}
+
+        [Display(Name = "Amount")]
+        public int? Amount { get; set; }
     }
 }

@@ -26,7 +26,8 @@
             @Html.DropDownList("ReportSelection",
                     new SelectList(Enum.GetValues(typeof(Reports))),
                     "Select Report",
-                    new { @class = "form-control" })
+                    new { @class = "form-control", @onchange = "func()" })
+
         </div>
         @*  For file upload buttons, jQuery updates file name when selected
             Set up routing for POST *@
@@ -42,7 +43,33 @@
             @ViewBag.Message
         }
     </div>
-    <div class="col-md-6">
+    <div id="display_filters" class="col-md-6">
         @Html.Partial("_Filters")
     </div>
 </div>
+
+@* Script function for generating current Filters based on user input. 
+    This function is called when the DropDownList for 
+    ReportSelection is changed by the user.
+
+    TODO: Make the function dynamic. Currently only 
+    generates the view from Views/Filters/_ConsumerSpendingFiltersView.cshtml 
+    via the home controller action method GetFilters(0)*@
+@section Scripts
+{
+    <script>
+        function func() {
+                $(document).ready(function () {
+                    $.ajax({
+                        url: '/Home/GetFilters',
+                        type: 'POST',
+                        async: false,
+                        data: { reportId: 0 },
+                        success: function (result) {
+                            $("#display_filters").html(result);
+                        }
+                    });
+                });
+        }
+    </script>
+}

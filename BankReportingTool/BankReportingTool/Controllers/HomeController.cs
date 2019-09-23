@@ -34,8 +34,20 @@ namespace BankReportingTool.Controllers
             {
                 // Consumer Spending Report
                 case (int)Reports.ConsumerSpending:
-                    viewName = "ConsumerSpendingFilters";
-                    viewModel = new ConsumerSpendingFiltersModel();
+                    viewName = "~/Views/Filters/_ConsumerSpendingFiltersView.cshtml";
+                    viewModel = new ConsumerSpendingFiltersModel()
+                    {
+                        AgeMax = null,
+                        AgeMin = null,
+                        IsMale = null,
+                        IsFemale = null,
+                        PaymentType = null,
+                        DateStart = null,
+                        DateEnd = null,
+                        State = null,
+                        Goods = null,
+                        Amount = null
+                    };
                     break;
 
                 // Uh oh! Id does not match a known report.
