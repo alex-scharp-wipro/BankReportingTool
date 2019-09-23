@@ -134,6 +134,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsumerSpending\ConsumerSpendingFiltersModel.cs" />
+    <Compile Include="Models\ConsumerSpending\ConsumerSpendingResultsModel.cs" />
+    <Compile Include="Models\ConsumerSpending\ConsumerSpendingSubmitModel.cs" />
     <Compile Include="Models\Reports.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
