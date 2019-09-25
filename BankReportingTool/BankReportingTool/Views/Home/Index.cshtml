@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card my-3">
             <div class="card-header">Reports DropDown</div>
             <div class="m-2">
@@ -28,8 +28,8 @@
             </div>
         </div>
     </div>
-    <div id="display_filters" class="col-md-6">
-        @Html.Partial("_Filters")
+    <div id="display_filters" class="col-md-12 mt-n3">
+        @*@Html.Partial("~/Views/Filters/_DefaultFilterView.cshtml")*@
     </div>
 </div>
 
@@ -44,7 +44,7 @@
                     $.ajax({
                         url: '/Home/GetFilters',
                         type: 'POST',
-                        async: false,
+                        async: true,
                         data: { reportId: $("#ReportDropDown").val() },
                         success: function (result) {
                             $("#display_filters").html(result);

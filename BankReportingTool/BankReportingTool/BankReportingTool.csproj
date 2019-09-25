@@ -218,7 +218,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Shared\_Filters.cshtml" />
+    <Content Include="Views\Filters\_DefaultFilterView.cshtml" />
     <Content Include="Views\Filters\_ConsumerSpendingFiltersView.cshtml" />
   </ItemGroup>
   <ItemGroup>
