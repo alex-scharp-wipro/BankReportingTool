@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,8 +9,14 @@ namespace BankReportingTool.Models
     /// <summary>
     /// Enumerates all reports
     /// </summary>
-    public enum Reports
+   
+    public class ReportsList
     {
-        ConsumerSpending
-    };
+        public enum Reports
+        {
+            [Display(Name = "Consumer Spending")]
+            ConsumerSpending = 1
+        };
+        public Reports Report { get; set; }
+    }
 }

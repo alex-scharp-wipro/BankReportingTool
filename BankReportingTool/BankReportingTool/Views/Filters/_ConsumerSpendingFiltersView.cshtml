@@ -1,5 +1,129 @@
 ﻿@model BankReportingTool.Models.ConsumerSpending.ConsumerSpendingFiltersModel
 
 <div class="card my-3">
-    <b>These filters are currently under construction!</b>
+    <div class="card-header">Filters</div>
+    <div class="card-body">
+        @*  For file upload buttons, jQuery updates file name when selected
+        Set up routing for POST *@
+        @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <label class="btn btn-primary">
+                <input id="file" name="file" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)" />
+                Choose File
+            </label>
+            <span id="upload-file-info"></span>
+            <br />
+            <input class="btn btn-primary mb-4" type="submit" value="Upload" />
+            @ViewBag.Message
+        }
+        @using (Html.BeginForm("Submit", "Home", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="transactionDate" class="mb-n4">Transaction Date:</label>
+                <div class="row">
+                    <input id="transactionDate" type="date" class="form-control col-sm-5 mx-auto" />
+                    <p class="text-body mt-3">To</p>
+                    <input type="date" class="form-control col-sm-5 mx-auto" />
+                </div>
+
+                <label for="ageRange" class="mb-n4 mt-4">Age Range:</label>
+                <div class="row">
+                    <input id="ageRange" type="number" min="10" max="130" class="form-control col-sm-5 mx-auto" />
+                    <p class="text-body mt-3">To</p>
+                    <input type="number" min="10" max="130" class="form-control col-sm-5 mx-auto" />
+                </div>
+
+                <label for="state" class="mb-n4 mt-4">State:</label>
+                <div class="row">
+                    <select id="state" class="form-control col-sm-5 ml-3">
+                        <option>Select</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+
+                <label for="paymentType" class="mb-n4 mt-4">Payment Type:</label>
+                <div class="row ml-1 mt-1">
+                    <div id="paymentType" class="form-check form-check-inline">
+                        <input id="paymentCash" type="checkbox" class="form-check-input" value="cash" />
+                        <label class="form-check-label" for="paymentCash">Cash</label>
+                        <input id="paymentCredit" type="checkbox" class="form-check-input ml-4" value="credit" />
+                        <label class="form-check-label" for="paymentCredit">Credit</label>
+                    </div>
+                </div>
+
+                <label for="onlinePayment" class="mb-n4 mt-4">Online Payment?</label>
+                <div class="row ml-1 mt-1">
+                    <div id="onlinePayment" class="form-check form-check-inline">
+                        <input id="yes" type="checkbox" class="form-check-input" value="true" />
+                        <label class="form-check-label" for="yes">Yes</label>
+                        <input id="no" type="checkbox" class="form-check-input ml-4" value="false" />
+                        <label class="form-check-label" for="no">No</label>
+                    </div>
+                </div>
+
+                <label for="gender" class="mb-n4 mt-4">Gender:</label>
+                <div class="row ml-1 mt-1">
+                    <div id="gender" class="form-check form-check-inline">
+                        <input id="ale" type="checkbox" class="form-check-input" value="male" />
+                        <label class="form-check-label" for="male">Male</label>
+                        <input id="female" type="checkbox" class="form-check-input ml-4" value="female" />
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Create Report" class="btn btn-primary" />
+        }
+    </div>
 </div>
+

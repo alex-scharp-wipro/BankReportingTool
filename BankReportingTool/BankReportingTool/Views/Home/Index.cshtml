@@ -1,4 +1,4 @@
-﻿@using BankReportingTool.Models;
+﻿@model BankReportingTool.Models.ReportsList
 
 @{
     ViewBag.Title = "Home Page";
@@ -23,25 +23,10 @@
     <div class="col-md-6">
         <div class="card my-3">
             <div class="card-header">Reports DropDown</div>
-            @Html.DropDownList("ReportSelection",
-                    new SelectList(Enum.GetValues(typeof(Reports))),
-                    "Select Report",
-                    new { @class = "form-control", @onchange = "func()" })
-
+            <div class="m-2">
+                @Html.EnumDropDownListFor(m => m.Report, "Select Report", new { id = "ReportDropDown", @class = "form-control", @onchange = "func()" })
+            </div>
         </div>
-        @*  For file upload buttons, jQuery updates file name when selected
-            Set up routing for POST *@
-        @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            <label class="btn btn-primary">
-                <input id="file" name="file" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)" />
-                Choose File
-            </label>
-            <span id="upload-file-info"></span>
-            <br />
-            <input class="btn btn-primary" type="submit" value="Upload" />
-            @ViewBag.Message
-        }
     </div>
     <div id="display_filters" class="col-md-6">
         @Html.Partial("_Filters")
@@ -50,11 +35,7 @@
 
 @* Script function for generating current Filters based on user input. 
     This function is called when the DropDownList for 
-    ReportSelection is changed by the user.
-
-    TODO: Make the function dynamic. Currently only 
-    generates the view from Views/Filters/_ConsumerSpendingFiltersView.cshtml 
-    via the home controller action method GetFilters(0)*@
+    ReportSelection is changed by the user.*@
 @section Scripts
 {
     <script>
@@ -64,7 +45,7 @@
                         url: '/Home/GetFilters',
                         type: 'POST',
                         async: false,
-                        data: { reportId: 0 },
+                        data: { reportId: $("#ReportDropDown").val() },
                         success: function (result) {
                             $("#display_filters").html(result);
                         }

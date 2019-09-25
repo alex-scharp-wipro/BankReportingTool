@@ -33,7 +33,7 @@ namespace BankReportingTool.Controllers
             switch(reportId)
             {
                 // Consumer Spending Report
-                case (int)Reports.ConsumerSpending:
+                case (int)ReportsList.Reports.ConsumerSpending:
                     viewName = "~/Views/Filters/_ConsumerSpendingFiltersView.cshtml";
                     viewModel = new ConsumerSpendingFiltersModel()
                     {
