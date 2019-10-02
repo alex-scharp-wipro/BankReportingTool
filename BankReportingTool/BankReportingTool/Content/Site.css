@@ -29,3 +29,14 @@ textarea {
 .input-group .input-group-text {
     width: 100%;
 }
+
+.result {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 15px;
+}
+
+.chart {
+    text-align: center;
+    padding-bottom: 35px;
+}
