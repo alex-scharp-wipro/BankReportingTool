@@ -19,39 +19,40 @@
         </div>
     </div>
 </div>
+
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card my-3">
             <div class="card-header">Reports DropDown</div>
             <div class="m-2">
-                @Html.EnumDropDownListFor(m => m.Report, "Select Report", new { id = "ReportDropDown", @class = "form-control", @onchange = "func()" })
+                @Html.EnumDropDownListFor(m => m.Report, "Select Report", new { id = "ReportDropDown", @class = "selectpicker", @onchange = "func()" })
             </div>
         </div>
     </div>
-    <div id="display_filters" class="col-md-6">
-        @Html.Partial("_Filters")
+    <div id="display_filters" class="col-md-12 mt-n3">
+        @*@Html.Partial("~/Views/Filters/_DefaultFilterView.cshtml")*@
     </div>
 </div>
 
-
-@* Script function for generating current Filters based on user input. 
-    This function is called when the DropDownList for 
+@* Script function for generating current Filters based on user input.
+    This function is called when the DropDownList for
     ReportSelection is changed by the user.*@
 @section Scripts
 {
     <script>
         function func() {
-                $(document).ready(function () {
-                    $.ajax({
-                        url: '/Home/GetFilters',
-                        type: 'POST',
-                        async: false,
-                        data: { reportId: $("#ReportDropDown").val() },
-                        success: function (result) {
-                            $("#display_filters").html(result);
-                        }
-                    });
+            $(document).ready(function () {
+                $.ajax({
+                    url: '/Home/GetFilters',
+                    type: 'POST',
+                    async: true,
+                    data: { reportId: $("#ReportDropDown").val() },
+                    success: function (result) {
+                        $("#display_filters").html(result);
+                    }
                 });
+            });
         }
     </script>
+    
 }

@@ -32,6 +32,11 @@ namespace BankReportingTool.Controllers
             // Assign viewName and viewModel based on reportId
             switch(reportId)
             {
+                case 0:
+                    viewName = "~/Views/Filters/_DefaultFilterView.cshtml";
+                    viewModel = null;
+                    break;
+                
                 // Consumer Spending Report
                 case (int)ReportsList.Reports.ConsumerSpending:
                     viewName = "~/Views/Filters/_ConsumerSpendingFiltersView.cshtml";

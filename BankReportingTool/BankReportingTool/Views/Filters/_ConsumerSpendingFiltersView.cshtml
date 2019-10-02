@@ -4,7 +4,7 @@
     <div class="card-header">Filters</div>
     <div class="card-body">
         @*  For file upload buttons, jQuery updates file name when selected
-        Set up routing for POST *@
+            Set up routing for POST *@
         @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <label class="btn btn-primary">
@@ -19,23 +19,47 @@
         @using (Html.BeginForm("Submit", "Home", FormMethod.Post))
         {
             <div class="form-group">
-                <label for="transactionDate" class="mb-n4">Transaction Date:</label>
-                <div class="row">
-                    <input id="transactionDate" type="date" class="form-control col-sm-5 mx-auto" />
-                    <p class="text-body mt-3">To</p>
-                    <input type="date" class="form-control col-sm-5 mx-auto" />
+                <label for="datepicker" class="mb-n4">Transaction Date:</label>
+                <div class="input-daterange form-inline" id="datepicker">
+                    <div class="input-group mr-3">
+                        <div class="input-group-prepend mb-2">
+                            <span class="input-group-text">Begin</span>
+                        </div>
+                        <input type="text" class="form-control mb-2" name="start" id="transactionBegin" />
+                        <div class="input-group-append mb-2">
+                            <span class="input-group-text fa fa-calendar"></span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend mb-2">
+                            <span class="input-group-text">End</span>
+                        </div>
+                        <input type="text" class="form-control mb-2" name="end" id="transactionEnd" />
+                        <div class="input-group-append mb-2">
+                            <span class="input-group-text fa fa-calendar"></span>
+                        </div>
+                    </div>
                 </div>
 
                 <label for="ageRange" class="mb-n4 mt-4">Age Range:</label>
-                <div class="row">
-                    <input id="ageRange" type="number" min="10" max="130" class="form-control col-sm-5 mx-auto" />
-                    <p class="text-body mt-3">To</p>
-                    <input type="number" min="10" max="130" class="form-control col-sm-5 mx-auto" />
+                <div class="form-inline" id="ageRange">
+                    <div class="input-group mr-3">
+                        <div class="input-group-prepend mb-2">
+                            <span class="input-group-text">Min</span>
+                        </div>
+                        <input type="number" min="14" max="130" class="form-control mb-2" name="start" id="minAge" />
+                    </div>
+                    <div class="input-group mr-3">
+                        <div class="input-group-prepend mb-2">
+                            <span class="input-group-text">Max</span>
+                        </div>
+                        <input type="number" min="14" max="130" class="form-control mb-2" name="start" id="maxAge" />
+                    </div>
                 </div>
 
                 <label for="state" class="mb-n4 mt-4">State:</label>
-                <div class="row">
-                    <select id="state" class="form-control col-sm-5 ml-3">
+                <div>
+                    <select id="state">
                         <option>Select</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -114,7 +138,7 @@
                 <label for="gender" class="mb-n4 mt-4">Gender:</label>
                 <div class="row ml-1 mt-1">
                     <div id="gender" class="form-check form-check-inline">
-                        <input id="ale" type="checkbox" class="form-check-input" value="male" />
+                        <input id="male" type="checkbox" class="form-check-input" value="male" />
                         <label class="form-check-label" for="male">Male</label>
                         <input id="female" type="checkbox" class="form-check-input ml-4" value="female" />
                         <label class="form-check-label" for="female">Female</label>
@@ -127,3 +151,16 @@
     </div>
 </div>
 
+<script>
+    $('#datepicker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $(function () {
+            $('#state').selectpicker();
+        });
+    });
+</script>
